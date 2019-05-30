@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>maze</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+<script type="text/javascript" src="https://static.codehs.com/gulp/ec071a764d83f34910ba21fab0b0f0cc20293542/chs-js-lib/chs.js"></script>
+
+
+<style>
+canvas {
+    border: 1px solid black;
+    display: inline-block;
+    vertical-align: top;
+}
+
+pre {
+    border: 1px solid black;
+    display: inline-block;
+    width: 400px;
+    height: 500px;
+    background-color: #F5F5F5;
+}
+</style>
+
+</head>
+
+<body>
+<h1>maze</h1>
+
+
+
+<canvas
+width="400"
+height="500"
+class="codehs-editor-canvas"></canvas>
+<pre id="console"></pre>
+
+<script>
+window.onload = function() {
+
+    function start(){
+    
+    var cenX = getWidth()/2;
+    var cenY = getHeight()/2;
+    var cy = cenY - 20;
+    
+    var backcolor = new Color (0, 0, 80);
+    var background = new Rectangle(1000, 10000);
+    background.setColor(backcolor);
+    add(background);
+    
+    mazewalls(Color.black, 5);
+    
+    var cenbox = new Rectangle(105, 55);
+    cenbox.setPosition(146, 197.5);
+    cenbox.setColor(Color.black);
+    add(cenbox);
+    var cenboxt = new Rectangle(90, 40);
+    cenboxt.setPosition(155, 205);
+    cenboxt.setColor(backcolor);
+    add(cenboxt);
+    var boxout = new Rectangle(50, 30);
+    boxout.setPosition(175, 188);
+    boxout.setColor(backcolor);
+    add(boxout);
+    
+    drawPacMan(100, 272, Color.yellow);
+    
+    drawGhostc(cenX, cy, Color.red);
+    drawGhostc(80, 100, Color.green);
+    drawGhostc(300, 270, Color.black);
+    drawGhostc(30, 300, Color.orange);
+    drawGhostc(300, 25, Color.yellow);
+    
+}
+
+function mazewalls(color, width){
+    
+    var w2 = width * 2;
+    
+    var wall = new Line(1, 1, 1, 500);
+    wall.setColor(color);
+    wall.setLineWidth(w2);
+    add(wall);
+    
+    var wall = new Line(1, 1, 400, 1);
+    wall.setColor(color);
+    wall.setLineWidth(w2);
+    add(wall);
+    
+    var wall = new Line(400, 1, 400, 500);
+    wall.setColor(color);
+    wall.setLineWidth(w2);
+    add(wall);
+    
+    var wall = new Line(1, 480, 400, 480);
+    wall.setColor(color);
+    wall.setLineWidth(w2);
+    add(wall);
+    
+    var wall = new Line(50, 150, 350, 150);
+    wall.setColor(color);
+    wall.setLineWidth(width);
+    add(wall);
+    
+    var wall = new Line(100, 50, 100, 125);
+    wall.setColor(color);
+    wall.setLineWidth(width);
+    add(wall);
+    
+    var wall = new Line(150, 50, 150, 125);
+    wall.setColor(color);
+    wall.setLineWidth(width);
+    add(wall);
+    
+    var wall = new Line(200, 50, 200, 125);
+    wall.setColor(color);
+    wall.setLineWidth(width);
+    add(wall);
+    
+    var wall = new Line(250, 50, 250, 125);
+    wall.setColor(color);
+    wall.setLineWidth(width);
+    add(wall);
+    
+    var wall = new Line(50, 50, 50, 125);
+    wall.setColor(color);
+    wall.setLineWidth(width);
+    add(wall);
+    
+    var wall = new Line(300, 50, 300, 125);
+    wall.setColor(color);
+    wall.setLineWidth(width);
+    add(wall);
+    
+    var wall = new Line(350, 50, 350, 125);
+    wall.setColor(color);
+    wall.setLineWidth(width);
+    add(wall);
+    
+    var wall = new Line(50, 200, 150, 200);
+    wall.setColor(color);
+    wall.setLineWidth(width);
+    add(wall);
+    
+    var wall = new Line(200, 200, 350, 200);
+    wall.setColor(color);
+    wall.setLineWidth(width);
+    add(wall);
+    
+    var wall = new Line(50, 300, 350, 300);
+    wall.setColor(color);
+    wall.setLineWidth(width);
+    add(wall);
+    
+    var wall = new Line(50, 250, 100, 250);
+    wall.setColor(color);
+    wall.setLineWidth(width);
+    add(wall);
+    
+    var wall = new Line(300, 250, 350, 250);
+    wall.setColor(color);
+    wall.setLineWidth(width);
+    add(wall);
+    
+    var wall = new Line(125, 400, 275, 400);
+    wall.setColor(color);
+    wall.setLineWidth(width);
+    add(wall);
+    
+    var wall = new Line(125, 350, 275, 350);
+    wall.setColor(color);
+    wall.setLineWidth(width);
+    add(wall);
+    
+    var wall = new Line(125, 450, 275, 450);
+    wall.setColor(color);
+    wall.setLineWidth(width);
+    add(wall);
+    
+    var wall = new Line(75, 350, 75, 450);
+    wall.setColor(color);
+    wall.setLineWidth(width);
+    add(wall);
+    
+    var wall = new Line(325, 350, 325, 450);
+    wall.setColor(color);
+    wall.setLineWidth(width);
+    add(wall);
+    
+    
+    
+}
+
+
+function drawPacMan(x, y, color){
+    
+    var pac = new Circle(15);
+    pac.setColor(color);
+    pac.setPosition(x, y);
+    add(pac);
+    
+    var backcolor = new Color (0, 0, 80);
+    
+    var mouth =new Arc(16, 100, 1, 50);
+    mouth.setColor(backcolor);
+    mouth.setPosition(x, y);
+    add(mouth);
+    
+    
+    
+    
+}
+
+
+function drawGhostc(x, y, color){
+    
+    var cirghost = new Circle(15);
+    cirghost.setColor(color);
+	cirghost.setPosition(x, y);
+	add(cirghost);
+	
+	var whi = new Color (255, 255, 255);
+	
+	var eyex = x + 7;
+	var eyey = y - 5;
+	var eye = new Circle(5);
+	eye.setColor(whi);
+	eye.setPosition(eyex, eyey);
+	add(eye);
+    
+    var eyx = x - 7;
+	var eyy = y - 5;
+	var eye = new Circle(5);
+	eye.setColor(whi);
+	eye.setPosition(eyx, eyy);
+	add(eye);
+	
+	var blu = new Color (0, 255, 255);
+	
+	var pux = eyex + 3.5;
+	var eyey = y - 5;
+	var pu = new Circle(2);
+	pu.setColor(blu);
+	pu.setPosition(pux, eyey);
+	add(pu);
+	
+	var px = x - 10;
+	var eyy = y - 5;
+	var pu = new Circle(2);
+	pu.setColor(blu);
+	pu.setPosition(px, eyy);
+	add(pu);
+	
+	var recty = y + 2;
+	var rectx = x - 15;
+	var rect = new Rectangle(30, 15);
+	rect.setColor(color);
+	rect.setPosition(rectx, recty);
+	add(rect);
+	
+	var dx = x - 9;
+	var dy = y + 15;
+	var dcir = new Circle(6);
+	dcir.setColor(color);
+	dcir.setPosition(dx, dy);
+	add(dcir);
+	
+	var dxi = x - 0;
+	var dyi = y + 15;
+	var dcir = new Circle(6);
+	dcir.setColor(color);
+	dcir.setPosition(dxi, dyi);
+	add(dcir);
+	
+	var dxo = x + 9;
+	var dyo = y + 15;
+	var dcir = new Circle(6);
+	dcir.setColor(color);
+	dcir.setPosition(dxo, dyo);
+	add(dcir);
+	
+}
+
+
+    if (typeof start === 'function') {
+        start();
+    }
+};
+</script>
+
+</body>
+</html>
