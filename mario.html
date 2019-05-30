@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>mario</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+<script type="text/javascript" src="https://static.codehs.com/gulp/ec071a764d83f34910ba21fab0b0f0cc20293542/chs-js-lib/chs.js"></script>
+
+
+<style>
+canvas {
+    border: 1px solid black;
+    display: inline-block;
+    vertical-align: top;
+}
+
+pre {
+    border: 1px solid black;
+    display: inline-block;
+    width: 400px;
+    height: 500px;
+    background-color: #F5F5F5;
+}
+</style>
+
+</head>
+
+<body>
+<h1>mario 3</h1>
+
+
+
+<canvas
+width="400"
+height="500"
+class="codehs-editor-canvas"></canvas>
+<pre id="console"></pre>
+
+<script>
+window.onload = function() {
+
+    function start(){
+    var height = readInt("how height? ");
+        if (height <= 0){
+        var height = readInt("to small pick a bigger height ");
+    } else if (height >= 14){
+        var height = readInt("to tall pick a bigger height ");
+    }
+    for(var row = 0; row <= height; row++){
+        var h = 13 - row
+        for(var space = 0; space <= h; space++ ){
+            print(" ");
+        }
+        
+        for(var hash = 0; hash <= row; hash++){
+            print("#")
+        }
+        print("  ");
+        var t = 13 - row
+        for(var ha = 0; ha <= row; ha++ ){
+            print("#");
+        }
+        
+        for(var spa = 0; spa <= t; spa++){
+            print(" ")
+        }
+        
+        println(" ");
+    }
+    
+    
+}
+
+
+    if (typeof start === 'function') {
+        start();
+    }
+};
+</script>
+
+</body>
+</html>
